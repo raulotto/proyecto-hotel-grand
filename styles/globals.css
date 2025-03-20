@@ -1,6 +1,25 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-olive-grand: #405d65;
+  --color-black-grand: #303133;
+  --color-grey-grand: #bababa;
+  --text-parrafos: 14px;
+  --text-title-section: 24px;
+  --text-suptitle: .6em;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -10,33 +29,38 @@
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+
+
+body, h1, h2, h3, p, div {
+  font-family: var(--font-manrope), sans-serif;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  h1 {
+    @apply text-4xl font-bold text-gray-900;
+  }
+  h2 {
+    @apply text-3xl font-semibold text-gray-800;
+  }
+  h3 {
+    @apply text-2xl font-medium text-gray-700;
+  }
+  h4 {
+    @apply text-xl font-medium text-gray-600;
+  }
+  p {
+    @apply text-base text-gray-600 leading-relaxed;
+  }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer components {
+  .divider-line {
+    @apply w-20 h-[3px] bg-grey-grand mb-4 mt-2;
+  }
+  .suptitle{
+    @apply text-suptitle uppercase text-grey-grand tracking-widest;
+  }
+  .fade-animation {
+    @apply  transition-opacity duration-300 ease-in-out;
   }
 }
